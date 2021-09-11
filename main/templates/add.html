@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Add a New Trip</h2>
+    <div class ="row">
+        <form class="col s12" method='POST' action="/travels/add_trip">
+            {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="place" class="form-label text-dark">Destination</label>
+                    <input type="text" class="form-control" value="" name="place" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="plan" class="form-label text-dark">Travel Plan</label>
+                    <input type="text" class="form-control" value="" name="plan" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="date_start" class="form-label text-dark">Date Start</label>
+                    <input type="date" class="form-control" value="" name="date_start" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="date_end" class="form-label text-dark">Date End</label>
+                    <input type="date" class="form-control" value="" name="date_end" required>
+                </div>
+            </div>
+            <input class="btn btn-primary btn-lg" type="submit" href="add_travels" value="Create">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h1>aqui va la ficha del destino </h1>
+
+
+<h1>{{trips.place}}</h1>
+<p>Planned by: {{trip.created_by}}</p>
+<p>Description: {{trip.plan}}</p>
+<p>Travel Date From: {{trip.date_start|date:"M d, Y"}}</p>
+<p>Travel Date To: {{trip.date_end|date:"M d, Y"}}</p>
+
+<h2>Other user's joining the trip:</h2>
+<!-- <ul>
+    {% for traveller in trips %}
+    <li>{{trip.travellers}}</li>
+
+    {% endfor %} -->
+{% endblock %}

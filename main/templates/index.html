@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block titulo %}Travel Buddy{% endblock %}
+
+{% block contenido %}
+<h1>Welcome: {{request.session.user.name}}</h1>
+<!--<a href="/logout">SALIR DEL SISTEMA</a>-->
+<h2> Travels </h2>
+    <table class="table table-striped">
+        <tread>
+            <tr>
+                <th>Destination</th>
+                <th>Travel start date</th>
+                <th>Travel end date</th>
+                <th>Plan</th>
+                <th>Action</th>
+            </tr>
+        </tread>
+
+        <tbody>
+            {% for trip in listTrip %}
+                var url = "/travels/destination/" + {{trip.id}}
+                <tr>
+                    <td><a href="/travels/destination/" + {{trip.id}}>{{trip.place}}</a></td>
+                    <td>{{trip.date_start}}</td>
+                    <td>{{trip.date_end}}</td>
+                    <td>{{trip.plan}}</td>
+                    <td><a href="#">Cancel</a></td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</table>
+<h3>Other User's Travel Plans</h3>
+<table class="table table-striped">
+    <thead>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Join?</th>
+    </thead>
+<tbody>
+    {% for trip1 in other_trips %}
+    <tr>
+        <td>{{trip1}}</td>
+        <td><a href="/travels/destination/{{trips.id}}">{{trip1.destination}}</a></td>
+        <td>{{trip1.date_start|date:"M d, Y"}}</td>
+        <td>{{trip1.date_end|date:"M d, Y"}}</td>
+        <td><a href="travels/join/{{user.id}}">Join</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="/travels/add">Add Travel Plan</a>
+</body>
+{% endblock %}
